@@ -11,7 +11,7 @@ class Create extends Component{
         this.state = {};
     }
     onChangeHandler(event){
-        this.setState({ [event.target.name]: event.target.value })
+            this.setState({ [event.target.name]: event.target.value })
     }
     render(){
         console.log(this.props);
@@ -41,7 +41,12 @@ function mapStateToProps(state, ownProps){
 function mapDispatchToProps(dispatch){
     return{
         add: (value) => {
-            dispatch({type:'ADD_ARTICLE', payload: value})
+            if(Object.keys(value).length != 0){
+                console.log("value....", value);
+                dispatch({type:'ADD_ARTICLE', payload: value})
+            }else{
+                alert("enter some values");
+            }
         }
     }
 }
